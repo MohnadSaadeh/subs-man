@@ -1,0 +1,159 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} UI Tables {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-plain">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title mt-0"><strong></strong>{{member.name}} Profile </strong> </h4>
+                <p><strong>Final Balance:</strong> {{ final_balance }} </p>
+                <p class="card-category"> Here All Subscriptions table</p>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="">
+                        <tr>
+                            <th>Sub ID</th>
+                            
+                            <th>Offer</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Paid</th>
+                            <th>Free Days</th>
+                            <th>Discount</th>
+                            <th>To Pay</th>
+                            <th>Action</th>
+                        </tr>
+
+
+                    </thead>
+                    <tbody>
+                    
+                    {% for subscription in subscriptions   %}
+                        {#{% with latest_sub=member.get_latest_subscription %}#}
+                    <tr class="{% if subscription.end_date >= today and subscription.start_date <= today %}table-success {% endif %}" >
+                        <td>{{ subscription.id }}</td>
+                        <td>{{ subscription.offer}} {{ subscription.offer.price }}</td>
+                        <td>{{ subscription.start_date }}</td>
+                        <td>{{ subscription.end_date }}</td>
+                        <td>{{ subscription.is_paid|yesno:"Yes,No" }}</td>
+                        <td>{{ subscription.free_days }}</td>
+                        <td>{{ subscription.descount }}</td>
+                        <td>{{ subscription.remaining_balance }}</td>
+                        
+                        <td> 
+                            {% if subscription.is_paid == False %}
+                            <button class="btn btn-success pay-button" data-member-id="{{member.id}}" data-subscription-id="{{subscription.id}}" >Pay</button>
+                            {% else %}
+                            <button disabled="disabled" class="btn btn-secondary">Payed</button>
+                            {% endif %}
+                        </td>
+
+                    </tr>
+                        {# {% endwith %} #}
+                    {% empty %}
+                    <tr>
+                        <td colspan="7">No subscriptions found.</td>
+                    </tr>
+
+                        
+                    {%endfor%}
+                    </tbody>
+                </table>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+document.querySelectorAll(".pay-button").forEach(button => {
+    button.addEventListener("click", async (event) => {
+        const memberId = event.target.getAttribute("data-member-id");
+        const subscriptionId = event.target.getAttribute("data-subscription-id");
+
+        const { value: formValues } = await Swal.fire({
+            title: "Enter Payment Details",
+            html: `
+                <input id="swal-amount" class="swal2-input" placeholder="Enter Amount" type="number">
+            `,
+            focusConfirm: false,
+            showCancelButton: true,
+            confirmButtonText: "Pay",
+            preConfirm: () => {
+                const amount = document.getElementById("swal-amount").value;
+                if (!amount || amount <= 0) {
+                    Swal.showValidationMessage("Please enter a valid amount.");
+                    return false;
+                }
+                return { amount };
+            }
+        });
+
+        if (formValues) {
+            // Send data to Django backend
+            fetch("/process-payment/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": getCSRFToken() // Get CSRF token
+                },
+                body: JSON.stringify({ 
+                    member_id: memberId, 
+                    subscription_id: subscriptionId, 
+                    amount: formValues.amount 
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    Swal.fire("Payment Successful", `You paid  ${formValues.amount} NIS`, "success");
+                        setTimeout(function() {
+                            window.location.href = '/member_profile/' + memberId;  // Redirect to the class page
+                        }, 2000); // Redirect after 2 seconds
+                
+                } else {
+                    Swal.fire("Payment Failed", data.message || "Something went wrong!", "error");
+                }
+            })
+            .catch(error => {
+                Swal.fire("Error", "Failed to process payment", "error");
+            });
+        }
+    });
+});
+
+// Function to get CSRF token from cookies
+function getCSRFToken() {
+    const cookies = document.cookie.split(";");
+    for (let cookie of cookies) {
+        let [name, value] = cookie.trim().split("=");
+        if (name === "csrftoken") {
+            return value;
+        }
+    }
+    return "";
+}
+
+
+
+</script>
+
+{% endblock javascripts %}
+
+

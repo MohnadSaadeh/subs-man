@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>مراجعة طلبات التسجيل</title>
+</head>
+<body>
+    <h2>طلبات التسجيل المعلقة</h2>
+    <ul>
+        {% for req in requests %}
+            <li>
+                {{ req.name }} - {{ req.email }}
+                <a href="{% url 'approve_request' req.id %}">الموافقة</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

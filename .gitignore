@@ -1,0 +1,94 @@
+# byte-compiled / optimized / DLL files
+
+# tests and coverage
+*.pytest_cache
+.coverage
+
+# database & logs
+*.db
+*.sqlite3
+*.log
+
+
+# javascript
+package-lock.json
+
+staticfiles/*
+!staticfiles/.gitkeep 
+.vscode/symbols.json
+
+apps/static/assets/node_modules
+apps/static/assets/yarn.lock
+apps/static/assets/.temp
+
+
+
+
+
+
+
+# Byte-compiled / optimized files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment folders
+venv/
+env/
+
+# Django stuff
+*.log
+*.pot
+*.pyc
+*.pyo
+*.sqlite3
+db.sqlite3
+
+# Environment variables
+.env
+
+# Static and media files
+staticfiles/
+static/
+media/
+
+# VS Code settings
+.vscode/
+
+# PyCharm
+.idea/
+
+# macOS system files
+.DS_Store
+
+# Node.js stuff (from package.json)
+node_modules/
+package-lock.json
+
+# Locale compiled files
+*.mo
+
+# Migration pyc (keep migrations themselves)
+**/migrations/__pycache__/
+
+# PostgreSQL dumps
+*.sql
+*.dump
+
+# Test coverage
+htmlcov/
+.coverage
+.tox/
+
+# MyPy
+.mypy_cache/
+
+# Runtime config
+runtime.txt
+
+# pycache in custom folders
+apps/**/__pycache__/
+core/**/__pycache__/
+landing/**/__pycache__/
+tenants/**/__pycache__/
+

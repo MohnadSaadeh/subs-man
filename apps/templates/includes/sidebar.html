@@ -1,0 +1,107 @@
+    <div class="sidebar" data-color="purple" data-background-color="white" data-image="/static/assets/img/sidebar-1.jpg">
+      <div class="logo">
+        <a target="_blank" rel="noopener noreferrer" 
+            href="https://appseed.us/admin-dashboards/django-dashboard-material" class="simple-text logo-normal">
+          C l u p ' s 
+        </a>
+      </div>
+      <div class="sidebar-wrapper">
+        <ul class="nav">
+        {% if request.user.is_authenticated %} 
+        
+
+          <li class="nav-item {% if 'index' in segment %} active {% endif %}">
+            <a class="nav-link" href="/">
+              <i class="material-icons">dashboard</i>
+              <p>Dashboard</p>
+            </a>
+          </li>
+
+          <li class="nav-item {% if 'page-user' in segment %} active {% endif %}">
+            <a class="nav-link" href="home/page-user.html">
+              <i class="material-icons">person</i>
+              <p>User Profile</p>
+            </a>
+          </li>
+          
+          <li class="nav-item {% if 'ui-tables' in segment  %} active {% endif %}">
+            <a class="nav-link" href="/view_calss_page">
+              <i class="material-icons">content_paste</i>
+              <p>Classes List</p>
+            </a>
+          </li>
+          <!-- Members "nav-item {% if 'ui-tables' in segment  %} active {% endif %}" -->
+          <li class="nav-item {% if 'c' in segment  %} active {% endif %}">
+            <a class="nav-link" href="/view_calss_page">
+              <i class="fa fa-users" aria-hidden="true"></i>
+              <p>Members</p>
+            </a>
+          </li>
+          <!-- Imployees -->
+          <li class="nav-item {% if 'c' in segment  %} active {% endif %}">
+            <a class="nav-link" href="/view_calss_page">
+              <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+              <p>Imployees</p>
+            </a>
+          </li>
+          <!-- Shop -->
+          <li class="nav-item {% if 'c' in segment  %} active {% endif %}">
+            <a class="nav-link" href="/view_calss_page">
+              <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+              <p>My Shop</p>
+            </a>
+          </li>
+
+          <li class="nav-item {% if 'ui-typography' in segment %} active {% endif %}">
+            <a class="nav-link" href="home/ui-typography.html">
+              <i class="material-icons">library_books</i>
+              <p>Typography</p>
+            </a>
+          </li>
+          <li class="nav-item {% if 'ui-icons' in segment %} active {% endif %}">
+            <a class="nav-link" href="home/ui-icons.html">
+              <i class="material-icons">bubble_chart</i>
+              <p>Icons</p>
+            </a>
+          </li>
+          <li class="nav-item {% if 'ui-maps' in segment %} active {% endif %}">
+            <a class="nav-link" href="home/ui-maps.html">
+              <i class="material-icons">location_ons</i>
+              <p>Maps</p>
+            </a>
+          </li>
+          <li class="nav-item {% if 'ui-notifications.html' in segment %} active {% endif %}">
+            <a class="nav-link" href="home/ui-notifications.html">
+              <i class="material-icons">notifications</i>
+              <p>Notifications</p>
+            </a>
+          </li>
+        
+          <!-- <li class="nav-item ">
+            <a class="nav-link" href="home/page-rtl-support.html">
+              <i class="material-icons">language</i>
+              <p>RTL Support</p>
+            </a>
+          </li> -->
+          
+          <li class="nav-item ">
+            <a class="nav-link">
+              <i class="material-icons">language</i>
+              <p>اللغة الحالية: {{ LANGUAGE_CODE }}</p>
+            </a>
+          </li>
+
+          <li class="nav-item ">
+            <a class="nav-link" href="/logout" ><!--  url 'logout' i comment it -->
+              <i class="material-icons">directions_run</i>
+              <p>Logout</p>
+            </a>
+          </li>
+
+
+
+        {% endif %}  
+        </ul>
+      </div>
+
+    </div>

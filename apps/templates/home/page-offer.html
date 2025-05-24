@@ -1,0 +1,146 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Page User {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <div class="row">
+    <div class="col-md-8">
+        <div class="card">
+        <div class="card-header card-header-warning">
+            <h4 class="card-title">Add a Subscription Type</h4>
+            <p class="card-category">You can add a subscription to your members</p>
+        </div>
+        <div class="card-body">
+            
+            <form action="/add_offer" method="post">
+                {% csrf_token %}
+            <div class="row">
+                
+                <div class="col-md-3">
+                <div class="form-group">
+                    <label class="bmd-label-floating">Type</label>
+                    <input type="text" class="form-control" name="offer_name">
+                </div>
+                </div>
+                
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                <div class="form-group">
+                    <label class="bmd-label-floating">Discription</label>
+                    <!-- <input type="text" class="form-control" name="description"> -->
+                    <textarea class="form-control" rows="2" name="offer_description"></textarea>
+                </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                <div class="form-group">
+                    <label class="bmd-label-floating">Price</label>
+                    <input type="number" class="form-control" name="offer_price">
+                </div>
+                </div>
+                <div class="col-md-3">
+                <div class="form-group">
+                    <label class="bmd-label-floating">Duration Months</label>
+                    <input type="number" class="form-control" name="duration_months">
+                </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-12">
+                <div class="form-group">
+                    <label>Note :</label>
+                    <div class="form-group">
+                    <label style="color: crimson;" class="bmd-label-floating"> it means the ' Price ' offer to members!</label>
+                    
+                    </div>
+                </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary pull-right">Add Offer</button>
+            <div class="clearfix"></div>
+            </form>
+        </div>
+        <div class="col-md-4">
+            <button class="btn btn-primary btn-block" onclick="md.showNotification('bottom','right')">Bottom Right</button>
+            <button onclick="showSweetAlert()" class="btn btn-success">Show Alert</button>
+            <button onclick="confirmAction()" class="btn btn-warning">Confirm</button>
+            <button onclick="showSuccessAlert()" class="btn btn-warning">googd</button>
+        </div>
+        </div>
+    </div>
+
+    </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+<!-- jQuery (required for Bootstrap and Bootstrap Material Design) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/4.1.1/js/bootstrap-material-design.min.js"></script>
+
+
+<script>
+
+
+
+
+
+    if (typeof md === "undefined") {
+        var md = {};
+    }
+    
+    md.showNotification = function (positionVertical, positionHorizontal) {
+        alert("Notification: " + positionVertical + " - " + positionHorizontal);
+    };
+    </script>
+    <script>
+        function showSweetAlert() {
+            Swal.fire({
+                title: "Success!",
+                text: "This is a beautiful alert.",
+                icon: "success",
+                confirmButtonText: "OK"
+            });
+        }
+        </script>
+        <script>
+            function confirmAction() {
+                if (confirm("Are you sure you want to proceed?")) {
+                    alert("You clicked OK!");
+                } else {
+                    alert("You clicked Cancel!");
+                }
+            }
+            </script>
+
+<script>
+    function showSuccessAlert() {
+        Swal.fire({
+            icon: 'success',
+            title: 'Success!',
+            text: 'Your subscription has been added successfully.',
+            showConfirmButton: false,  // Remove the confirm button
+            timer: 1000,  // Auto hide after 3 seconds
+            timerProgressBar: true,  // Show progress bar during the countdown
+            position: 'top-end',  // Position the alert at the top-right corner
+            willClose: () => {
+                console.log("SweetAlert closed!");
+            }
+        });
+    }
+
+    // Call this function when the action is successful
+    //showSuccessAlert();
+</script>
+    
+
+{% endblock javascripts %}

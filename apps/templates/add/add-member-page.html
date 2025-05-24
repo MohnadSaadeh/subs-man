@@ -1,0 +1,91 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Page User {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <div class="row">
+    <div class="col-md-8">
+        <div class="card card-profile">
+            
+            <div class="card-header card-header-primary">
+                <div class="card-avatar">
+                    <a href="#pablo">
+                        <img class="img" src="/static/assets/img/faces/marc.jpg" />
+                    </a>
+                </div>
+            </div>
+                <h4 class="card-title">Add a Member</h4>
+            <div class="card-body">
+                
+                <form action="/add_member" method="post">
+                    {% csrf_token %}
+                    <div class="row">
+                        
+                        <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="bmd-label-floating">Name</label>
+                            <input type="text" class="form-control" name="name">
+                        </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">Phone Number</label>
+                                <input type="number" class="form-control" name="phoneNumber" placeholder="f.e: 970599938149 Or 972599938149">
+                            </div>
+                            </div>
+                    </div>
+                    <div class="row">
+                        
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">E-mail</label>
+                                <input type="email" class="form-control" name="email" >
+                            </div>
+                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <select class="custom-select" name="classID" >
+                                    <option  selected>Choose a Class</option>
+                                    {% for class in classes %}
+
+                                    <option value="{{class.id}}">{{class.name}}</option>
+                                    
+                                    {%endfor%}
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-3">
+                            <!-- You can Put Sumthing here  -->
+                        </div>
+                    </div>
+                    
+                    <!-- <div class="row">
+                        <div class="col-md-5">
+                        <div class="form-group">
+                            <label>Note :</label>
+                            <div class="form-group">
+                            <label style="color: crimson;" class="bmd-label-floating"> IF YOUR Clup HAS ONLY ONE CLASS, DONT ADD ANOTHER  CLASS !</label>
+                            
+                            </div>
+                        </div>
+                        </div>
+                    </div> -->
+                    <button type="submit" class="btn btn-primary btn-round pull-right">Create</button>
+                
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

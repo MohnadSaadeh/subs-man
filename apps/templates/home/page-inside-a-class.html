@@ -1,0 +1,281 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} UI Tables {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+{% load whatsapp_tags %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title ">{{class.name}}</h4>
+                <p class="card-category">{{class.description}}</p>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+
+                <table class="table">
+                    <thead class=" text-primary">
+                    <th>
+                        ID
+                    </th>
+                    <th>
+                        Stats
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Subscription Date
+                    </th>
+                    <th>
+                        Balance
+                    </th>
+                    <th>
+                        End Date
+                    </th>
+                    <th>
+                        Days
+                    </th>
+                    <th>
+                        Action
+                    </th>
+                    </thead>
+                    <tbody>
+                    {% for member in members %}
+                        {% with latest_sub=member.get_latest_subscription %}
+                        <!-- اي حدا مش مجدد و اشتراكه الاخير منتهي بيهطي علامه حمرا عالسطر  -->
+                    <tr class="{% if latest_sub.end_date <= today %}table-danger{% endif %}" >
+                        <!-- بتقدر اتضيف اي حدا مش مجدد و اشتراكه الاخير ضايله يومين بيهطي علامه برتقالي عالسطر  -->
+                        <td>
+                        {{member.id}}
+                        </td>
+                        <td style="align-items: center; ">
+                        
+                        
+                        {% if member.status == "active" %} 
+                        <!-- <a href="#" class="btn btn-success btn-round">active</a> -->
+                        <div class="member-status-circle member-active"><p>Active</p></div>
+                        <div><p>  فعال </p></div>
+                        {% elif member.status == "new" %}
+                        <div class="member-status-circle member-new"><p>New</p></div>
+                        <div><p>  جديد </p></div>
+                        {% elif member.status == "overdue" %}
+                        <div style="display: flex;">
+                            <div class="member-status-circle member-active"><p>Active</p></div>
+                            <div class="member-status-circle member-overdue"><p>Overdue</p></div>
+                        </div>
+                        <div><p>متأخر في الدفع </p></div>
+                        {% elif member.status == "expired" %}
+                        <div class="member-status-circle member-expired"><p>Expired</p></div>
+                        <div><p>  منتتهي الاشتراك  </p></div>
+                        {% elif member.status == "suspended" %}
+                        <div class="member-status-circle member-suspended"><p>Suspended</p></div>
+                        <div><p>  مجمد مديون </p></div>
+                        {% endif %}
+                        </td>
+                        <td>
+                        <!-- <i class="material-icons text-danger">date_range</i> -->
+                        <!-- WhatsApp Button -->
+                        <a href="https://wa.me/{{ member.phone_number|whatsapp_format }}?text={{ member.encoded_message }}"
+                        class="material-icons" target="_blank" rel="noreferrer">
+                        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" style="width:20px; height:20px;">
+                        </a>
+                        <!-- WhatsApp Button -->
+                        <a href="/member_profile/{{member.id}}" >{{member.name}} </a>
+                        
+                        </td>
+                        <td>
+                            {{ latest_sub.start_date }}
+                        </td>
+                        <!-- class="balance balance-menus"  if we need mony-->
+                        <td class="balance balance-menus">
+                        {{member.balance}}
+                        </td>
+                        <td>
+                            {{ latest_sub.end_date }}
+                        </td>
+                        <td class="text-primary">
+                        xcvfbdbf
+                        </td>
+                        <td class="text-primary">
+                            <button data-member-id="{{ member.id }}" data-member-name="{{ member.name }}"  class="btn btn-success subscribe-btn" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap" >Subscribe</button>
+                            
+                        </td>
+                        
+                    </tr>
+                        {% endwith %}
+                    {%endfor%}
+                
+
+
+                    
+                    </tbody>
+                </table>
+                </div>
+            </div>
+            </div>
+        </div>
+
+
+        <!-- ---------- MODAL POP UP----------- -->
+        
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content card ">
+                    <div class="modal-header card-header card-header-primary">
+                        <h5 class="modal-title" id="exampleModalLabel">Add Subscription</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                            <p><span class="subs-active" id="member-name-display"></span></p><!-- Member name from script -->
+                        <form id="subscription-form" action="" method="post">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label >Start Date:</label>
+                                <input name="start_date" type="date"  class="form-control" id="recipient-name">
+                                <span class="error-message" id="error-start_date"></span>
+                            </div>
+                            <div class="form-group">
+                                <label >End Date:</label>
+                                <input name="end_date" type="date"  class="form-control" id="recipient-name">
+                                <span class="error-message" id="error-end_date"></span>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="input-group input-group-outline is-valid my-3">
+                                    <label class="form-label">Free Days</label>
+                                    <input name="free_days" value="0" type="number" class="form-control" id="recipient-name">
+                                    </div>
+                                    <div class="input-group input-group-outline is-invalid my-3">
+                                        <label class="form-label">Descount</label>
+                                        <input name="descount" value="0" type="number" class="form-control" id="recipient-name">
+                                    </div>
+
+                                </div>
+                                <div class="col-md-5">
+
+                                    <div class="form-group">
+                                        <select class="custom-select" name="offerID">
+                                            <option  value="Choose an Offer">Choose an Offer</option>
+                                            {% for offer in offers %}
+                                            
+                                            <option value="{{offer.id}}">{{offer.offer_name}}</option>
+                                            
+                                            {%endfor%}
+                                        </select>
+                                        <span class="error-message" id="error-offerID"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-success" >Add</button>
+                            </div>
+                        </form>
+                        <div id="success-message" style="color: green;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ----------END MODAL POP UP----------- -->
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Get the form element
+            const subscriptionForm = document.getElementById("subscription-form"); //int id
+            const memberNameDisplay = document.getElementById("member-name-display");//the name 
+
+    
+            // Select all "Subscribe" buttons
+            const subscribeButtons = document.querySelectorAll(".subscribe-btn");
+    
+            // Loop through each button and add event listener
+            subscribeButtons.forEach(button => {
+                button.addEventListener("click", function () {
+                    // Get the member ID from the clicked button
+                    const memberId = parseInt(this.getAttribute("data-member-id"), 10);
+                    const memberName = this.getAttribute("data-member-name"); //get the name
+
+    
+                    // Update the form action dynamically
+                    subscriptionForm.action = `/subscribe/${memberId}/`;  // Example: "/subscribe/5/"
+                    
+                    memberNameDisplay.textContent = memberName; // Display the member name in the modal
+                    
+                });
+            });
+        });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $("#subscription-form").submit(function(event) {
+            event.preventDefault();  // Prevent form submission
+    
+            $(".error-message").text("");  // Clear previous error messages
+            $("#success-message").text("");  // Clear previous success message
+
+            // Disable the submit button to prevent multiple clicks
+            $("button[type='submit']").prop('disabled', true).text('Processing...');
+
+            // ✅ Get the form action dynamically
+            let formAction = $("#subscription-form").attr("action");
+            $.ajax({
+                type: "POST",
+                url: formAction,  // ✅ Use correct dynamic URL,  // Update this with your Django URL name
+                data: $(this).serialize(),
+                dataType: "json",
+                success: function(response) {
+                    if (response.status === "error") {
+                        // Display validation errors
+                        $.each(response.errors, function(field, errorMessage) {
+                            $("#error-" + field).text(errorMessage).css("color", "red").fadeIn().delay(3000).fadeOut();
+                            // $("#error-" + field).text(errorMessage).fadeIn().delay(3000).fadeOut(); 
+                        });
+                        $("button[type='submit']").prop('disabled', false).text('Add');
+                    } else if (response.status === "success") {
+                        $("#success-message").text(response.message).fadeIn().delay(3000).fadeOut();
+                        // Redirect to the class page after success
+                        setTimeout(function() {
+                            window.location.href = '/view_class/' + response.class_id;  // Redirect to the class page
+                        }, 2000); // Redirect after 2 seconds
+
+                        $("#productForm")[0].reset();  // Reset form on success
+                         // Delay before redirecting (optional, for user to see message)
+                        
+                        
+                    }
+                }
+                
+            });
+        });
+    });
+    </script>
+
+    <style>
+
+.error-message {
+  color: #ff4d4d;  /* Red color */
+  font-size: 14px; /* Adjust font size */
+  font-weight: bold; /* Make it bold */
+  font-family: 'Arial', sans-serif; /* Clean font */
+  margin-top: 5px; /* Add some spacing */
+  display: block; /* Ensure it appears on a new line */
+  text-shadow: 1px 1px 2px rgba(255, 77, 77, 0.5); /* Add a subtle shadow */
+}
+    </style>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

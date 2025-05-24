@@ -1,0 +1,219 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-05-08 10:59+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: .\apps\home\models.py:32
+msgid "Room Name"
+msgstr "السم الغرفة"
+
+#: .\apps\home\models.py:33 .\apps\home\models.py:60
+msgid "Description"
+msgstr "الوصف"
+
+#: .\apps\home\models.py:34
+msgid "Day of Week"
+msgstr "اليوم"
+
+#: .\apps\home\models.py:35
+msgid "Start Time"
+msgstr "وقت البدايه"
+
+#: .\apps\home\models.py:36
+msgid "End Time"
+msgstr "وقت النهاية"
+
+#: .\apps\home\models.py:37 .\apps\home\models.py:63
+msgid "Created At"
+msgstr "انشئ في"
+
+#: .\apps\home\models.py:38 .\apps\home\models.py:64
+msgid "Updated At"
+msgstr "تم التعديل في"
+
+#: .\apps\home\models.py:59
+msgid "Offer Name"
+msgstr "اسم العرض"
+
+#: .\apps\home\models.py:61
+msgid "Price"
+msgstr "السعر"
+
+#: .\apps\home\models.py:62
+msgid "Duration (Months)"
+msgstr "الفتره أشهر"
+
+#: .\apps\home\models.py:99 .\apps\templates\home\index.html:56
+msgid "Active"
+msgstr "فعال"
+
+#: .\apps\home\models.py:100 .\apps\templates\home\index.html:95
+msgid "Expired"
+msgstr "منتهي"
+
+#: .\apps\home\models.py:101 .\apps\templates\home\index.html:77
+msgid "Overdue"
+msgstr "متأخر بالدفع"
+
+#: .\apps\home\models.py:102 .\apps\templates\home\index.html:130
+msgid "Suspended"
+msgstr "مجمّد"
+
+#: .\apps\home\models.py:103
+msgid "Banned"
+msgstr "ممنوع"
+
+#: .\apps\home\models.py:104 .\apps\templates\home\index.html:113
+msgid "New"
+msgstr "جديد"
+
+#: .\apps\home\models.py:106
+msgid "Full Name"
+msgstr "الاسم الكامل"
+
+#: .\apps\home\models.py:107
+msgid "Phone Number"
+msgstr "رقم الهاتف"
+
+#: .\apps\home\models.py:108
+msgid "Email"
+msgstr "e-mail"
+
+#: .\apps\home\models.py:114
+msgid "Classroom"
+msgstr "غرفه صفية"
+
+#: .\apps\home\models.py:116
+msgid "Balance"
+msgstr "الرصيد"
+
+#: .\apps\home\models.py:117
+msgid "Status"
+msgstr "الحاله"
+
+#: .\apps\home\models.py:118
+msgid "Free Member"
+msgstr "عضو مجاني"
+
+#: .\apps\home\models.py:119
+msgid "Join Date"
+msgstr "تاريخ الانضمام"
+
+#: .\apps\home\models.py:120
+msgid "Last Updated"
+msgstr "تاريخ اخر تعديل"
+
+#: .\apps\home\models.py:166 .\apps\home\models.py:214
+msgid "Member"
+msgstr "عضو"
+
+#: .\apps\home\models.py:173
+msgid "Offer"
+msgstr "العرض"
+
+#: .\apps\home\models.py:175
+msgid "Start Date"
+msgstr "تاريخ البدئ"
+
+#: .\apps\home\models.py:176
+msgid "End Date"
+msgstr "تاريخ الانتهاء"
+
+#: .\apps\home\models.py:177
+msgid "Is Paid"
+msgstr "مدفوع"
+
+#: .\apps\home\models.py:178
+msgid "Is Active"
+msgstr "نشط"
+
+#: .\apps\home\models.py:179
+msgid "Free Days"
+msgstr "ايام مجانا"
+
+#: .\apps\home\models.py:180
+msgid "Discount"
+msgstr "الخصم"
+
+#: .\apps\home\models.py:181
+msgid "Remaining Balance"
+msgstr "الرصيد"
+
+#: .\apps\home\models.py:215
+msgid "Subscription"
+msgstr "الاشتراك"
+
+#: .\apps\home\models.py:216
+msgid "Amount Paid"
+msgstr "قيمة الدفعه"
+
+#: .\apps\home\models.py:217
+msgid "Payment Date"
+msgstr "وقت الدفع"
+
+#: .\apps\home\views.py:140
+msgid ""
+"Opps , You have exceeded the limit of active users for this organization."
+msgstr "عفوا , لقد اجتزت عدد المستخدمن لهذة المؤسسة"
+
+#: .\apps\home\views.py:385
+msgid "Missing required fields"
+msgstr "حقل ضروري"
+
+#: .\apps\templates\home\index.html:59
+msgid "Active Members"
+msgstr "الاعضاء النشطين"
+
+#: .\apps\templates\home\index.html:80
+msgid "Late payment"
+msgstr ""
+
+#: .\apps\templates\home\index.html:81
+msgid "Committed and indebted"
+msgstr "ملتزم و مديون"
+
+#: .\apps\templates\home\index.html:98
+msgid "Expired Subscription"
+msgstr "الاشتراكات المنتهيه"
+
+#: .\apps\templates\home\index.html:99
+msgid " The last Subscription Has Been Expired"
+msgstr "تم انتهاء اخر اشتراك"
+
+#: .\apps\templates\home\index.html:103
+msgid "Show"
+msgstr "اظهار"
+
+#: .\apps\templates\home\index.html:116
+msgid "new"
+msgstr "جديد"
+
+#: .\apps\templates\home\index.html:117
+msgid "New Members Under Test Period"
+msgstr "أعضاء جدد"
+
+#: .\apps\templates\home\index.html:133
+#, fuzzy
+#| msgid "Suspended"
+msgid "Suspended Member"
+msgstr "مجمّد"
+
+#: .\apps\templates\home\index.html:134
+msgid "dismissed subscriber and have previous debts"
+msgstr "مشترك مفصول وعليه ديون"

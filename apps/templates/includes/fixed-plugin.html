@@ -1,0 +1,76 @@
+
+  <div class="fixed-plugin">
+    <div class="dropdown show-dropdown" data-bs-auto-close="outside">
+      <a href="#"   data-toggle="dropdown">
+        <i class="fa fa-cog fa-2x"> </i>
+      </a>
+      {% if request.user.is_authenticated %}
+      <ul class="dropdown-menu">
+        
+        <li class="header-title"> Sidebar Filters</li>
+
+        <a href="/add_member_page" class="btn btn-success btn-round">+ Mamber</a>
+        <a href="#" class="btn btn-primary btn-round">اضافة عضو</a>
+
+        <li class="adjustments-line">
+          <a href="javascript:void(0)" class="switch-trigger active-color">
+            <div class="badge-colors ml-auto mr-auto">
+              <span class="badge filter badge-purple" data-color="purple"></span>
+              <span class="badge filter badge-azure" data-color="azure"></span>
+              <span class="badge filter badge-green" data-color="green"></span>
+              <span class="badge filter badge-warning" data-color="orange"></span>
+              <span class="badge filter badge-danger" data-color="danger"></span>
+              <span class="badge filter badge-rose active" data-color="rose"></span>
+            </div>
+            <div class="clearfix"></div>
+          </a>
+        </li>
+        <li class="header-title">Images</li>
+        <li class="active">
+          <a class="img-holder switch-trigger" href="javascript:void(0)">
+            <img src="/static/assets/img/sidebar-1.jpg" alt="">
+          </a>
+        </li>
+        <li>
+          <a class="img-holder switch-trigger" href="javascript:void(0)">
+            <img src="/static/assets/img/sidebar-2.jpg" alt="">
+          </a>
+        </li>
+        <li>
+          <a class="img-holder switch-trigger" href="javascript:void(0)">
+            <img src="/static/assets/img/sidebar-3.jpg" alt="">
+          </a>
+        </li>
+        <li>
+          <a class="img-holder switch-trigger" href="javascript:void(0)">
+            <img src="/static/assets/img/sidebar-4.jpg" alt="">
+          </a>
+        </li>
+        <li class="button-container">
+          <a  rel="noopener noreferrer"
+              href="/add_class_page" class="btn btn-danger btn-block">
+              + Activity Room
+          </a>
+        </li>
+        <li class="button-container">
+          <a rel="noopener noreferrer" 
+              href="/add_offer_page" class="btn btn-info  btn-block">
+              Add Offer
+          </a>
+        </li>
+      </ul>
+      {% endif %}
+    </div>
+  </div>
+<script>
+
+document.addEventListener("click", function (event) {
+    let dropdown = document.querySelector(".fixed-plugin .dropdown");
+    
+    // Check if the click is outside the fixed-plugin dropdown
+    if (!dropdown.contains(event.target)) {
+        dropdown.classList.remove("show-dropdown"); // Hide dropdown
+    }
+});
+
+</script>

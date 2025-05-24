@@ -1,0 +1,62 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Sign Up {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title">
+                Create Account
+                </h4>
+            </div>
+            <div class="card-body">
+                <h6 class="card-category">
+                    Add your credentials
+                </h6>
+
+                <!-- {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                    <li class="text-danger">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %} -->
+
+                
+                
+                {% if error_message %}
+                <script>
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Registration Failed',
+                        text: '{{ error_message|escapejs }}',
+                        confirmButtonColor: '#d33'
+                    });
+                </script>
+                {% endif %}
+
+
+                <form method="post">
+                    {% csrf_token %} {{form|crispy}} 
+                                
+                    <p>Have an account? <a href="/login" class="text-primary">Here</a></p>
+                    <button type="submit" class="btn btn-success pull-left">Regester</button>
+                </form>
+                <br />
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

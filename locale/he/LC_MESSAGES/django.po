@@ -1,0 +1,193 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-05-07 20:30+0300\n"
+"PO-Revision-Date: 2025-05-08 14:08+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: he\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? "
+"2 : 3);\n"
+"X-Generator: Poedit 3.6\n"
+
+#: .\apps\home\models.py:32
+msgid "Room Name"
+msgstr "שם החדר"
+
+#: .\apps\home\models.py:33 .\apps\home\models.py:60
+msgid "Description"
+msgstr "תיאור"
+
+#: .\apps\home\models.py:34
+msgid "Day of Week"
+msgstr "יום בשבוע"
+
+#: .\apps\home\models.py:35
+msgid "Start Time"
+msgstr "זמן התחלה"
+
+#: .\apps\home\models.py:36
+msgid "End Time"
+msgstr "שעת סיום"
+
+#: .\apps\home\models.py:37 .\apps\home\models.py:63
+msgid "Created At"
+msgstr "נוצר ב"
+
+#: .\apps\home\models.py:38 .\apps\home\models.py:64
+msgid "Updated At"
+msgstr "עודכן ב"
+
+#: .\apps\home\models.py:59
+msgid "Offer Name"
+msgstr ""
+
+#: .\apps\home\models.py:61
+msgid "Price"
+msgstr ""
+
+#: .\apps\home\models.py:62
+msgid "Duration (Months)"
+msgstr ""
+
+#: .\apps\home\models.py:99 .\apps\templates\home\index.html:56
+msgid "Active"
+msgstr ""
+
+#: .\apps\home\models.py:100 .\apps\templates\home\index.html:95
+msgid "Expired"
+msgstr ""
+
+#: .\apps\home\models.py:101
+msgid "Overdue"
+msgstr ""
+
+#: .\apps\home\models.py:102
+msgid "Suspended"
+msgstr ""
+
+#: .\apps\home\models.py:103
+msgid "Banned"
+msgstr ""
+
+#: .\apps\home\models.py:104 .\apps\templates\home\index.html:113
+msgid "New"
+msgstr ""
+
+#: .\apps\home\models.py:106
+msgid "Full Name"
+msgstr ""
+
+#: .\apps\home\models.py:107
+msgid "Phone Number"
+msgstr ""
+
+#: .\apps\home\models.py:108
+msgid "Email"
+msgstr ""
+
+#: .\apps\home\models.py:114
+msgid "Classroom"
+msgstr ""
+
+#: .\apps\home\models.py:116
+msgid "Balance"
+msgstr ""
+
+#: .\apps\home\models.py:117
+msgid "Status"
+msgstr ""
+
+#: .\apps\home\models.py:118
+msgid "Free Member"
+msgstr ""
+
+#: .\apps\home\models.py:119
+msgid "Join Date"
+msgstr ""
+
+#: .\apps\home\models.py:120
+msgid "Last Updated"
+msgstr ""
+
+#: .\apps\home\models.py:166 .\apps\home\models.py:214
+msgid "Member"
+msgstr ""
+
+#: .\apps\home\models.py:173
+msgid "Offer"
+msgstr ""
+
+#: .\apps\home\models.py:175
+msgid "Start Date"
+msgstr ""
+
+#: .\apps\home\models.py:176
+msgid "End Date"
+msgstr ""
+
+#: .\apps\home\models.py:177
+msgid "Is Paid"
+msgstr ""
+
+#: .\apps\home\models.py:178
+msgid "Is Active"
+msgstr ""
+
+#: .\apps\home\models.py:179
+msgid "Free Days"
+msgstr ""
+
+#: .\apps\home\models.py:180
+msgid "Discount"
+msgstr ""
+
+#: .\apps\home\models.py:181
+msgid "Remaining Balance"
+msgstr ""
+
+#: .\apps\home\models.py:215
+msgid "Subscription"
+msgstr ""
+
+#: .\apps\home\models.py:216
+msgid "Amount Paid"
+msgstr ""
+
+#: .\apps\home\models.py:217
+msgid "Payment Date"
+msgstr ""
+
+#: .\apps\templates\home\index.html:59
+msgid "Active Members"
+msgstr ""
+
+#: .\apps\templates\home\index.html:98
+msgid "Expired Subscription"
+msgstr ""
+
+#: .\apps\templates\home\index.html:99
+msgid " The last Subscription Has Been Expired"
+msgstr ""
+
+#: .\apps\templates\home\index.html:103
+msgid "Show"
+msgstr ""
+
+#: .\apps\templates\home\index.html:116
+msgid "new"
+msgstr ""
+
+#: .\apps\templates\home\index.html:117
+msgid "New Members Under Test Period"
+msgstr ""

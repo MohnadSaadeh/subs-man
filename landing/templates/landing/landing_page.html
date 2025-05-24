@@ -1,0 +1,377 @@
+<!-- <!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>التسجيل في النظام</title>
+</head>
+<body>
+    <h2>تسجيل نادي أو مؤسسة جديدة</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">إرسال الطلب</button>
+    </form>
+    {% if messages %}
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>التسجيل في النظام</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .container {
+            max-width: 500px;
+            background: white;
+            padding: 20px;
+            margin: 50px auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        input, button {
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            background: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #218838;
+        }
+        #countdown {
+            font-size: 18px;
+            font-weight: bold;
+            color: red;
+        }
+        #payment-btn {
+            display: none;
+            background: #007bff;
+        }
+        #payment-btn:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>ابدأ الفترة التجريبية المجانية</h2>
+        <p>سجل الآن للاستفادة من 7 أيام مجانية، ثم يمكنك الترقية إلى الخطة المدفوعة.</p>
+        <form id="signup-form">
+            <input type="text" id="name" placeholder="الاسم الكامل" required>
+            <input type="email" id="email" placeholder="البريد الإلكتروني" required>
+            <input type="text" id="phone" placeholder="رقم الهاتف" required>
+            <button type="submit">ابدأ الفترة التجريبية</button>
+        </form>
+        <p id="countdown"></p>
+        <button id="payment-btn">ادفع الآن للتجديد</button>
+    </div>
+    
+    <script>
+        document.getElementById('signup-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('تم تسجيلك بنجاح! تبدأ الفترة التجريبية الآن.');
+            startTrial();
+        });
+
+        function startTrial() {
+            let trialEnd = new Date();
+            trialEnd.setDate(trialEnd.getDate() + 7);
+            localStorage.setItem('trialEnd', trialEnd);
+            updateCountdown();
+        }
+
+        function updateCountdown() {
+            let trialEnd = new Date(localStorage.getItem('trialEnd'));
+            let now = new Date();
+            let diff = trialEnd - now;
+            if (diff <= 0) {
+                document.getElementById('countdown').innerHTML = 'انتهت الفترة التجريبية!';
+                document.getElementById('payment-btn').style.display = 'block';
+            } else {
+                let days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                let hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                document.getElementById('countdown').innerHTML = `متبقي: ${days} يوم ${hours} ساعة ${minutes} دقيقة`;
+                setTimeout(updateCountdown, 60000);
+            }
+        }
+
+        if (localStorage.getItem('trialEnd')) {
+            updateCountdown();
+        }
+    </script>
+</body>
+</html> -->
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>التسجيل في النظام</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .container {
+            max-width: 500px;
+            background: white;
+            padding: 20px;
+            margin: 50px auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        input, button {
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            background: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #218838;
+        }
+        #countdown {
+            font-size: 18px;
+            font-weight: bold;
+            color: red;
+        }
+        #payment-btn {
+            display: none;
+            background: #007bff;
+        }
+        #payment-btn:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>ابدأ الفترة التجريبية المجانية</h2>
+        <p>سجل الآن للاستفادة من 7 أيام مجانية، ثم يمكنك الترقية إلى الخطة المدفوعة.</p>
+        <form id="signup-form">
+            <input type="text" id="name" placeholder="الاسم الكامل" required>
+            <input type="email" id="email" placeholder="البريد الإلكتروني" required>
+            <input type="text" id="phone" placeholder="رقم الهاتف" required>
+            <button type="submit">ابدأ الفترة التجريبية</button>
+        </form>
+        <p id="countdown"></p>
+        <button id="payment-btn">ادفع الآن للتجديد</button>
+    </div>
+    
+    <script>
+        document.getElementById('signup-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('تم تسجيلك بنجاح! تبدأ الفترة التجريبية الآن.');
+            startTrial();
+        });
+
+        function startTrial() {
+            let trialEnd = new Date();
+            trialEnd.setDate(trialEnd.getDate() + 7);
+            localStorage.setItem('trialEnd', trialEnd);
+            updateCountdown();
+        }
+
+        function updateCountdown() {
+            let trialEnd = new Date(localStorage.getItem('trialEnd'));
+            let now = new Date();
+            let diff = trialEnd - now;
+            if (diff <= 0) {
+                document.getElementById('countdown').innerHTML = 'انتهت الفترة التجريبية!';
+                document.getElementById('payment-btn').style.display = 'block';
+            } else {
+                let days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                let hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                document.getElementById('countdown').innerHTML = `متبقي: ${days} يوم ${hours} ساعة ${minutes} دقيقة`;
+                setTimeout(updateCountdown, 60000);
+            }
+        }
+
+        if (localStorage.getItem('trialEnd')) {
+            updateCountdown();
+        }
+    </script>
+</body>
+</html> -->
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة إدارة الاشتراكات</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            text-align: center;
+        }
+        .header {
+            background: linear-gradient(135deg, #007bff, #00c6ff);
+            color: white;
+            padding: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+        }
+        .pricing {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .price-card {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 45%;
+            margin: 10px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .price-card h4 {
+            font-size: 22px;
+        }
+        .price-card p {
+            font-size: 18px;
+        }
+        .footer {
+            margin-top: 30px;
+            padding: 15px;
+            background: #343a40;
+            color: white;
+            font-size: 16px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            margin-top: 15px;
+            font-size: 18px;
+            color: white;
+            background: #28a745;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">منصة إدارة الاشتراكات</div>
+    <div class="container">
+        <div class="section">
+            <h2>🚀 مرحبًا بك في منصتنا!</h2>
+            <p>نظام متكامل لإدارة الاشتراكات والمستخدمين بسهولة، مصمم خصيصًا للنوادي الرياضية والمراكز والمؤسسات.</p>
+            
+            <a href="/signup">
+                <button class="btn"> ابدأ الآن</button>
+            </a>
+            
+        </div>
+        <div class="section">
+            <h3>✨ لماذا تختار منصتنا؟</h3>
+            <ul style="list-style-type: none; padding: 0;">
+                <li>✅ إدارة مرنة للأعضاء والاشتراكات</li>
+                <li>✅ إشعارات تلقائية للتجديد والانتهاء</li>
+                <li>✅ تقارير متقدمة لمراقبة الأداء</li>
+                <li>✅ نظام دفع إلكتروني متكامل</li>
+            </ul>
+        </div>
+        <div class="section">
+            <h3>💰 خطط الأسعار</h3>
+            <div class="pricing">
+                <div class="price-card">
+                    <h4>الخطة الأساسية</h4>
+                    <p>10$ شهريًا</p>
+                    <p>إدارة الأعضاء والاشتراكات</p>
+                </div>
+                <div class="price-card">
+                    <h4>الخطة المتقدمة</h4>
+                    <p>30$ شهريًا</p>
+                    <p>جميع الميزات الأساسية + تقارير متقدمة</p>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <h3>👨‍💻 عن المطور</h3>
+            <p>تم تطوير هذا النظام بواسطة <strong>مهند سعاده</strong>، مطور برمجيات متخصص في بناء الأنظمة السحابية.</p>
+        </div>
+    </div>
+    <div class="footer">© 2025 جميع الحقوق محفوظة</div>
+</body>
+</html>

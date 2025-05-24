@@ -1,0 +1,169 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Dashboard {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+{% load whatsapp_tags %}
+
+<div class="row">
+
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header card-header-danger">
+        <h4 class="card-title">الأعضاء المنتهيون</h4>
+        <p class="card-category">الأعضاء الذين انتهى آخر اشتراك لهم</p>
+      </div>
+      <div class="card-body table-responsive">
+        <table class="table table-hover">
+          <thead class="text-danger">
+            <tr>
+              <th>الاسم</th>
+              <th>تاريخ آخر اشتراك</th>
+              <th>الحالة</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            {% for member in page_obj %}
+            <tr>
+              <td>{{ member.name }}</td>
+              <td>
+                {{ member.balance }} 
+              </td>
+              <td>
+                {{ member.status }} 
+                
+              </td>
+              <td>
+                <span class="badge badge-danger">منتهي</span>
+              </td>
+              <td>
+                <!-- <a href="" target="_blank" class="btn btn-success">
+                  WhatsApp
+                </a> -->
+                <!-- <a  href="https://wa.me/{{ member.phone_number|whatsapp_format }}?text={{ member.encoded_message }}"
+                  class="btn btn-success" target="_blank" rel="noreferrer">
+                      WhatsApp
+                </a> -->
+                <!-- <a href="https://wa.me/{{ member.phone_number|whatsapp_format }}?text={{ member.encoded_message }}"
+                  class="material-icons" target="_blank" rel="noreferrer">
+                    <i class="fab fa-whatsapp"></i>
+                </a> -->
+
+                <a href="https://wa.me/{{ member.phone_number|whatsapp_format }}?text={{ member.encoded_message }}"
+                  class="material-icons" target="_blank" rel="noreferrer">
+                  <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" style="width:20px; height:20px;">
+                </a>
+
+
+                
+          
+              </td>
+
+            </tr>
+            {% empty %}
+            <tr>
+              <td colspan="3">لا يوجد أعضاء منتهيين.</td>
+            </tr>
+              
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+    <div class="col-md-12">
+    <div class="card card-chart">
+        <div class="card-header card-header-danger">
+        <!-- <div class="ct-chart" id="completedTasksChart"></div> -->
+        <p>Expired</p>
+        </div>
+        <div class="card-body">
+        <h4 class="card-title">منتهي الاشتراك</h4>
+        <p class="card-category">Last Campaign Performance</p>
+
+        <table class="table " border="1">
+            <thead class=" text-primary">
+                <tr>
+                    <th>Member Name</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Remaining Balance</th>
+                </tr>
+            </thead>
+            {#{% for subscription in page_obj %}#}
+            <tr>
+                <td>{{ subscription.member.name }}</td>
+                <td>{{ subscription.start_date }}</td>
+                <td>{{ subscription.end_date }}</td>
+                <td>{{ subscription.remaining_balance }}</td>
+            </tr>
+            {#{% empty %}#}
+            <tr>
+                <td colspan="4">No subscriptions found.</td>
+            </tr>
+            {#{% endfor %}#}
+        </table>
+        
+
+
+        </div>
+        <div class="card-footer">
+        <div class="stats">
+            <i class="material-icons">access_time</i> campaign sent 2 days ago
+        </div>
+        </div>
+    </div>
+    </div>
+
+</div>
+
+
+
+
+
+<!-- ---------------------- pagination ------------------------ -->
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+
+    
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+<script>
+$(document).ready(function() {
+    // Javascript method's body can be found in assets/js/demos.js
+    md.initDashboardPageCharts();
+});
+// window.onload = function() {
+// };
+    
+</script>
+
+
+{% endblock javascripts %}
