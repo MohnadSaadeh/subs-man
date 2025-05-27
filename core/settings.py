@@ -28,7 +28,7 @@ SECRET_KEY = config('SECRET_KEY', default='S#perS3crEt_1122')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=True, cast=bool)
-# DEBUG = False
+#DEBUG = False
 
 # load production server from .env
 # ALLOWED_HOSTS = ['localhost', '127.0.0.1', config('SERVER', default='127.0.0.1')]
@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'apps.home.apps.HomeConfig',  # Use the full path to your AppConfig (signals)
     #for crispy pip install crispy-bootstrap5
     #for crispy 
+    'whitenoise',
     'crispy_forms',    
     'crispy_bootstrap5',
     # 'axes',
@@ -81,6 +82,7 @@ SHARED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # for crispy important to put it here 
+    'whitenoise',
     'crispy_forms',
     'crispy_bootstrap5',
     # 'axes',
@@ -96,6 +98,7 @@ TENANT_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'whitenoise',
     'apps.home',  # تطبيقك الخاص
     # 'landing',
     # إضافة أي تطبيقات أخرى يحتاج المستأجر إليها
@@ -143,6 +146,8 @@ MIDDLEWARE = [
     # Third-party middleware
     'axes.middleware.AxesMiddleware',  # يفضل وضعه بعد AuthenticationMiddleware
 ]
+#STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 AUTHENTICATION_BACKENDS = [
     'axes.backends.AxesBackend',
@@ -214,7 +219,7 @@ DATABASE_ROUTERS = [
 
 
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 
 
 # Password validation
@@ -283,3 +288,5 @@ LOCALE_PATHS = [
     os.path.join(CORE_DIR, 'locale'),
 ]
 ###########################Translation##################################
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
