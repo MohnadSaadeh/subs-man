@@ -24,14 +24,3 @@ urlpatterns = [
         path('', include('django.contrib.auth.urls' ) ),
     ] 
 
-# urlpatterns = [ 	 
-#     path('i18n/', include('django.conf.urls.i18n')),  # لتمكين تغيير اللغة من واجهة المستخدم
-#     path('set-language/', set_language, name='set_language'),  # << هذا مهم
-#     ] 
-    
-# urlpatterns += i18n_patterns(
-#     path('admin/', admin.site.urls),
-#     # path('', include('home.urls')),
-#     path('', include("apps.home.urls")),
-#     path('', include('django.contrib.auth.urls' ) ),
-# )

@@ -33,8 +33,8 @@ DEBUG = config('DEBUG', default=True, cast=bool)
 # load production server from .env
 # ALLOWED_HOSTS = ['localhost', '127.0.0.1', config('SERVER', default='127.0.0.1')]
 # ALLOWED_HOSTS = ['192.168.1.133', 'localhost', '127.0.0.1']
+# ALLOWED_HOSTS = ['52.87.178.228']
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -187,15 +187,15 @@ TEMPLATES = [
 
 
 WSGI_APPLICATION = 'core.wsgi.application'
-ASGI_APPLICATION = "core.asgi.application" #WebSockets
+# ASGI_APPLICATION = "core.asgi.application" #WebSockets
 
 
 
-CHANNEL_LAYERS = {
-    "default": {
-        "BACKEND": "channels.layers.InMemoryChannelLayer",  # For development
-    }
-}
+# CHANNEL_LAYERS = {
+#     "default": {
+#         "BACKEND": "channels.layers.InMemoryChannelLayer",  # For development
+#     }
+# }
 
 
 
