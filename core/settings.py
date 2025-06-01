@@ -27,20 +27,20 @@ CORE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = config('SECRET_KEY', default='S#perS3crEt_1122')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=True, cast=bool)
-#DEBUG = False
+# DEBUG = config('DEBUG', default=True, cast=bool)
+DEBUG = False
 
 # load production server from .env
 # ALLOWED_HOSTS = ['localhost', '127.0.0.1', config('SERVER', default='127.0.0.1')]
 # ALLOWED_HOSTS = ['192.168.1.133', 'localhost', '127.0.0.1']
-# ALLOWED_HOSTS = ['52.87.178.228']
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['52.87.178.228']
+# ALLOWED_HOSTS = []
 
 # Application definition
 
 INSTALLED_APPS = [
     
-    'daphne', # you have to put it first ######## Daphne package, which is required for running an ASGI server.
+    # 'daphne', # you have to put it first ######## Daphne package, which is required for running an ASGI server.
     'django_tenants',  # مكتبة إدارة المستأجرين
     # 'tenants',  # التطبيق الذي سينظم المستأجرين
     'landing',
@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # 'apps.home', # التطبيق الأساسي الخاص بك
-    'channels',
+    # 'channels',
     # 'apps.home' , # Enable the inner home (home)
     'apps.home.apps.HomeConfig',  # Use the full path to your AppConfig (signals)
     #for crispy pip install crispy-bootstrap5
