@@ -204,9 +204,9 @@ DATABASES = {
         # 'ENGINE': 'django.db.backends.postgresql',
         'ENGINE': 'django_tenants.postgresql_backend',  # استخدم محرك django-tenants
 
-        'NAME': 'clupdb',
+        'NAME': 'saas_db',
         'USER': 'postgres',
-        'PASSWORD': '123456',
+        'PASSWORD': 'Free_Sofia_1q0w',
         'HOST': 'localhost',
         'PORT': '5432',
     }
